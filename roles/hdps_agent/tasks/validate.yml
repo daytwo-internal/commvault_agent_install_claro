@@ -1,0 +1,25 @@
+---
+- name: Validar directorio de instalación
+  ansible.builtin.stat:
+    path: "{{ hdps_install_directory }}"
+  register: hdps_install_dir
+
+- name: Validar instancia local
+  ansible.builtin.stat:
+    path: "/etc/CommVaultRegistry/Galaxy/{{ hdps_focus }}"
+  register: hdps_instance_dir
+
+- name: Validar procesos principales
+  ansible.builtin.shell: |
+    ps -ef | grep -Ei "cvd|cvlaunchd|ClMgrS|cvfwd" | grep -v grep
+  register: hdps_processes
+  changed_when: false
+  failed_when: false
+
+- name: Mostrar validación
+  ansible.builtin.debug:
+    msg:
+      - "Install dir exists: {{ hdps_install_dir.stat.exists }}"
+      - "Instance exists: {{ hdps_instance_dir.stat.exists }}"
+      - "Processes:"
+      - "{{ hdps_processes.stdout_lines }}"

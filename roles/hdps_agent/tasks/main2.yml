@@ -1,0 +1,17 @@
+---
+- name: Ejecutar prechecks
+  ansible.builtin.import_tasks: precheck.yml
+
+- name: Instalar agente HDPS
+  ansible.builtin.import_tasks: install.yml
+  when: hdps_run_install | bool
+
+- name: Registrar agente HDPS
+  ansible.builtin.import_tasks: register.yml
+  when:
+    - hdps_run_register | bool
+    - hdps_register_enabled | bool
+
+- name: Validar agente HDPS
+  ansible.builtin.import_tasks: validate.yml
+  when: hdps_run_validate | bool

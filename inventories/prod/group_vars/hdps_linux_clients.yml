@@ -1,0 +1,34 @@
+---
+hdps_focus: "Instance001"
+
+hdps_install_directory: "/opt/hds"
+hdps_temp_directory: "/tmp"
+hdps_remote_installer_dir: "/tmp/commvault_unix_installer"
+
+# Componentes para File Server Agent
+hdps_components:
+  - 1002   # File System Core
+  - 1101   # File System Agent
+
+
+# Datos del cliente
+hdps_interface_name: "{{ ansible_default_ipv4.address }}"
+hdps_client_name: "{{ inventory_hostname }}"
+hdps_client_hostname: "{{ ansible_fqdn | default(inventory_hostname) }}"
+
+
+hdps_use_http_proxy: false
+hdps_force_install: false
+
+# Ruta local desde donde Ansible copiará el instalador.
+# En AAP esto puede cambiar a una ruta montada o repositorio interno.
+hdps_local_installer_dir: "/home/daytwo_user/claro/instalador_agente/InstaladoresCommvault/Unix"
+hdps_commserve_hostname: ""
+hdps_authcode: ""
+hdps_commcell_user: ""
+hdps_commcell_password: ""
+
+
+# Registro contra CommServe
+
+hdps_auth_method: "authcode"   # authcode o user_password

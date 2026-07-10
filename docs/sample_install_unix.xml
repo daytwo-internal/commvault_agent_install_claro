@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<CVInstallManager_ClientSetup Focus="Instance001">
+<ClientAuthentication>
+<userAccountToLogin domainName="" encPassword="" password="" userName=""/>
+</ClientAuthentication>
+<CommServeInfo>
+<CommserveHostInfo clientName="" hostName=""/>
+</CommServeInfo>
+<clientComposition overWriteClientHostName="1">
+<clientInfo>
+<client clientCertificate="" cvdPort="" installDirectory="">
+<clientEntity clientName="" hostName=""/>
+<jobResulsDir path=""/>
+</client>
+<clientProps logFilesLocation=""/>
+<clientGroups clientGroupName=""/>
+</clientInfo>
+<components>
+<componentInfo ComponentId="1020" ComponentName="CommServe" consumeLicense="1"/>
+<cvDatabase cvidAccess="" cvidEmail="" cvidUser="admin" dbPath="" drPath="" saAccess=""/>
+<componentInfo ComponentId="1002" ComponentName="File System Core" consumeLicense="1"/>
+<fileSystem>
+<selectedSubclientPolicy subclientPolicyId="" subclientPolicyName=""/>
+</fileSystem>
+<componentInfo ComponentId="1101" ComponentName="File System" consumeLicense="1"/>
+<componentInfo ComponentId="1301" ComponentName="MediaAgent" consumeLicense="1"/>
+<mediaAgent>
+<indexCacheDirectory path=""/>
+</mediaAgent>
+<componentInfo ComponentId="1305" ComponentName="Storage Accelerator" consumeLicense="1"/>
+<componentInfo ComponentId="1174" ComponentName="WebServer" consumeLicense="1"/>
+<dm2WebService apachePortNumber="80" dm2DataFileInstallPath="" dm2WebSitePort="5000" searchSvcWebAlias="SearchSvc" xmlViewWebAlias="xmlview">
+<sqlServerInfo pAccess="" sqlServerName=""/>
+</dm2WebService>
+<componentInfo ComponentId="1118" ComponentName="CommCell Console" consumeLicense="1"/>
+<componentInfo ComponentId="1126" ComponentName="Documentum" consumeLicense="1"/>
+<componentInfo ComponentId="1204" ComponentName="Oracle" consumeLicense="1"/>
+<edcGroups instanceName="" instanceType=""/>
+<componentInfo ComponentId="1205" ComponentName="SAP for Oracle" consumeLicense="1"/>
+<componentInfo ComponentId="1210" ComponentName="SAP for Hana" consumeLicense="1"/>
+<componentInfo ComponentId="1211" ComponentName="Cassandra" consumeLicense="1"/>
+<cassInfo version="2"/>
+<componentInfo ComponentId="1206" ComponentName="SAP for MaxDB" consumeLicense="1"/>
+<componentInfo ComponentId="1201" ComponentName="Informix" consumeLicense="1"/>
+<componentInfo ComponentId="1202" ComponentName="Sybase" consumeLicense="1"/>
+<componentInfo ComponentId="1207" ComponentName="DB2" consumeLicense="1"/>
+<db2 db2ArchivePath="" db2AuditErrorPath="" db2RetrievePath=""/>
+<componentInfo ComponentId="1208" ComponentName="MySQL" consumeLicense="1"/>
+<componentInfo ComponentId="1209" ComponentName="PostgreSQL" consumeLicense="1"/>
+<componentInfo ComponentId="1051" ComponentName="Domino Database" consumeLicense="1"/>
+<lotusNotesDB>
+<instanceList binaryPath="" instanceName="" path=""/>
+</lotusNotesDB>
+<componentInfo ComponentId="1052" ComponentName="Domino Document" consumeLicense="1"/>
+<lotusNotesDoc>
+<instanceList binaryPath="" instanceName="" path=""/>
+</lotusNotesDoc>
+<componentInfo ComponentId="1053" ComponentName="Domino Mailbox Archiver" consumeLicense="1"/>
+<lotusNotesDataArchiver>
+<instanceList binaryPath="" instanceName="" path=""/>
+</lotusNotesDataArchiver>
+<componentInfo ComponentId="1108" ComponentName="Content Analyzer" consumeLicense="1"/>
+<componentInfo ComponentId="1114" ComponentName="Continuous Data Replicator" consumeLicense="1"/>
+<cdrDriver RolCacheMaxDiskSize="" logFileLocation=""/>
+<componentInfo ComponentId="1121" ComponentName="Novell OES File System" consumeLicense="1"/>
+<novellFS>
+<userAccount password="" userName=""/>
+</novellFS>
+<componentInfo ComponentId="1129" ComponentName="SAP Archive" consumeLicense="1"/>
+<objectServer objSrvWebServicePort="" objSrvWebServiceURL=""/>
+<componentInfo ComponentId="1128" ComponentName="External Data Connector" consumeLicense="1"/>
+<edcGroups instanceName="" instanceType=""/>
+<edcGroups instanceName="" instanceType=""/>
+<componentInfo ComponentId="1130" ComponentName="Resource Pack" consumeLicense="1"/>
+<componentInfo ComponentId="1304" ComponentName="SAN Storage Server" consumeLicense="1"/>
+<componentInfo ComponentId="1306" ComponentName="Index Store" consumeLicense="1"/>
+<componentInfo ComponentId="1135" ComponentName="Command Center" consumeLicense="1"/>
+<webConsole webConsolePort="" webConsoleURL="" webServerClientId="" webURL=""/>
+<componentInfo ComponentId="1136" ComponentName="Virtual Server" consumeLicense="1"/>
+<componentInfo ComponentId="1137" ComponentName="File System for IBM i" consumeLicense="1"/>
+<componentInfo ComponentId="1138" ComponentName="File System for OpenVMS" consumeLicense="1"/>
+<componentInfo ComponentId="1139" ComponentName="Storage Pool" consumeLicense="1"/>
+<componentInfo ComponentId="1140" ComponentName="Cloud Apps" consumeLicense="1"/>
+<componentInfo ComponentId="1153" ComponentName="Test Automation" consumeLicense="1"/>
+<componentInfo ComponentId="1154" ComponentName="Developer SDK - Python" consumeLicense="1"/>
+<componentInfo ComponentId="1156" ComponentName="Index Gateway" consumeLicense="1"/>
+<indexGateway webAliasName="" webSitePort=""/>
+<componentInfo ComponentId="1212" ComponentName="SQL Server" consumeLicense="1"/>
+<componentInfo ComponentId="1402" ComponentName="IntelliSnap" consumeLicense="1"/>
+<componentInfo ComponentId="1176" ComponentName="Hedvig Assist" consumeLicense="1"/>
+<componentInfo ComponentId="1173" ComponentName="Content Extractor" consumeLicense="1"/>
+<componentInfo ComponentId="1601" ComponentName="Data Analysis Toolkit" consumeLicense="1"/>
+<componentInfo ComponentId="1023" ComponentName="WorkFlow Engine" consumeLicense="1"/>
+<componentInfo ComponentId="1282" ComponentName="Hadoop" consumeLicense="1"/>
+<componentInfo ComponentId="1602" ComponentName="Message Queue" consumeLicense="1"/>
+<messageQueue messagequeueAMQPPort="" messagequeueDataDir="" messagequeueMQTTPort="" messagequeueMaxJvm="" messagequeueMinJvm="" messagequeueStompPort="" messagequeueTCPPort="" messagequeueWSPort="" messagequeueWebconsolePort=""/>
+<componentInfo ComponentId="1157" ComponentName="High Availability Computing" consumeLicense="1"/>
+<componentInfo ComponentId="1178" ComponentName="Cloud Services" consumeLicense="1"/>
+<componentInfo ComponentId="1281" ComponentName="MongoDB" consumeLicense="1"/>
+<mongoDBInfo nMongoPort="" pMongoAccess="" sMongoInstance=""/>
+<componentInfo ComponentId="1283" ComponentName="Splunk" consumeLicense="1"/>
+<componentInfo ComponentId="1177" ComponentName="Metrics Server" consumeLicense="1"/>
+<componentInfo ComponentId="1603" ComponentName="Advanced Indexing Pack" consumeLicense="1"/>
+<componentInfo ComponentId="1179" ComponentName="CV Tools" consumeLicense="1"/>
+<commonInfo globalFilters="" useExistingStoragePolicy="">
+<subclientPlanToUse planName=""/>
+<storagePolicyToUse storagePolicyId="" storagePolicyName=""/>
+</commonInfo>
+</components>
+<clientRoles bLaptopBackup="0" bNetworkProxy="" customRolesProp=""/>
+</clientComposition>
+<installFlags allowMultipleInstances="0" decoupledInstall="0" enableFileTypePermissions="0" forceIPV4="1" ignoreJobsRunning="0" install32Base="0" launchProcessManager="0" launchRolesManager="0" overrideClientInfo="False" preferredIPFamily="1" restoreOnlyAgents="0" startService="1" stopService="1" unixGroup="" unixGroupAccess="7" unixOtherAccess="7" unixTempDirectory="">
+<firewallInstall certificatePath="" enableFirewallConfig="" encryptedTunnel="1" firewallConnectionType="" httpProxyHostName="" httpProxyPortNumber="" portNumber="">
+<proxyInfo hostName="" portNumber=""/>
+</firewallInstall>
+</installFlags>
+<organizationProperties authCode=""/>
+</CVInstallManager_ClientSetup>

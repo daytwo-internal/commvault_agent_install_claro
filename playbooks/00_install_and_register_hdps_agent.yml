@@ -1,0 +1,8 @@
+---
+- name: Instalar y registrar agente Hitachi Data Protection Suite / Commvault
+  hosts: hdps_linux_clients
+  become: true
+  gather_facts: true
+
+  roles:
+    - role: hdps_agent

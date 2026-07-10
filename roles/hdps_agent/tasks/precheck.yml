@@ -1,0 +1,26 @@
+---
+- name: Validar sistema operativo soportado
+  ansible.builtin.assert:
+    that:
+      - ansible_system in ["Linux"]
+    fail_msg: "Este role por ahora está preparado para Linux."
+
+- name: Validar que no se use ruta remota con espacios
+  ansible.builtin.assert:
+    that:
+      - "' ' not in hdps_remote_installer_dir"
+    fail_msg: "La ruta remota del instalador no debe tener espacios."
+
+- name: Validar ruta local del instalador
+  ansible.builtin.assert:
+    that:
+      - hdps_local_installer_dir | length > 0
+    fail_msg: "Debe definirse hdps_local_installer_dir."
+  when: hdps_run_install | bool
+
+- name: Validar método de autenticación
+  ansible.builtin.assert:
+    that:
+      - hdps_auth_method in ["authcode", "user_password"]
+    fail_msg: "hdps_auth_method debe ser authcode o user_password."
+  when: hdps_run_register | bool

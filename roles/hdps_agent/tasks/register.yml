@@ -1,0 +1,47 @@
+---
+- name: Validar datos para registro con authcode
+  ansible.builtin.assert:
+    that:
+      - hdps_commserve_hostname | length > 0
+      - hdps_authcode | length > 0
+    fail_msg: "Para registro con authcode se requiere hdps_commserve_hostname y hdps_authcode."
+  when: hdps_auth_method == "authcode"
+
+- name: Validar datos para registro con usuario/password
+  ansible.builtin.assert:
+    that:
+      - hdps_commserve_hostname | length > 0
+      - hdps_commcell_user | length > 0
+      - hdps_commcell_password | length > 0
+    fail_msg: "Para registro con usuario/password se requiere CommServe, usuario y password."
+  when: hdps_auth_method == "user_password"
+
+- name: Configurar CommServe hostname en registry local
+  ansible.builtin.lineinfile:
+    path: "/etc/CommVaultRegistry/Galaxy/{{ hdps_focus }}/CommServe/.properties"
+    regexp: '^sCSHOSTNAME '
+    line: "sCSHOSTNAME {{ hdps_commserve_hostname }}"
+    create: true
+    owner: root
+    group: root
+    mode: "0660"
+
+- name: Registrar cliente con usuario/password
+  ansible.builtin.command:
+    cmd: >
+      timeout 180 bash -c 'cd {{ hdps_install_directory }}/Base64 &&
+      ./RegisterMe.sh -C {{ hdps_client_name }}
+      -U {{ hdps_commcell_user }}
+      -P "{{ hdps_commcell_password }}"'
+  register: hdps_register_result
+  no_log: true
+  when: hdps_auth_method == "user_password"
+
+- name: Registrar cliente con valores por defecto/authcode del XML
+  ansible.builtin.command:
+    cmd: >
+      timeout 180 bash -c 'cd {{ hdps_install_directory }}/Base64 &&
+      ./RegisterMe.sh -R'
+  register: hdps_register_result
+  no_log: true
+  when: hdps_auth_method == "authcode"

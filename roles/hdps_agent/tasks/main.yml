@@ -1,0 +1,3 @@
+---
+- name: Instalar y registrar agente HDPS/Commvault usando silent_install
+  ansible.builtin.import_tasks: install_and_register.yml

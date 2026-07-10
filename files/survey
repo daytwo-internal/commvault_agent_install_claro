@@ -1,0 +1,29 @@
+hdps_client_name
+hdps_client_hostname
+hdps_interface_name
+hdps_commserve_hostname
+hdps_auth_method
+hdps_authcode o credencial usuario/password
+
+---SURVEY-1----auth-code--------------------------------
+
+
+hdps_register_enabled: true
+hdps_auth_method: authcode
+hdps_commserve_hostname: commserve.cliente.local
+hdps_authcode: AUTH_CODE_REAL
+hdps_client_name: servidor01
+hdps_client_hostname: servidor01.dominio.local
+
+
+
+---SURVEY-2----user password--------------------------------
+
+
+hdps_register_enabled: true
+hdps_auth_method: user_password
+hdps_commserve_hostname: commserve.cliente.local --> crear credencial en ansible automation platform
+hdps_commcell_user: usuario_automatizacion
+hdps_commcell_password: ********
+#hdps_client_name: servidor01   --> esto debe sacar del inventario
+#hdps_client_hostname: servidor01.dominio.local

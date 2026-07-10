@@ -1,0 +1,50 @@
+---
+- name: Crear directorio remoto del instalador
+  ansible.builtin.file:
+    path: "{{ hdps_remote_installer_dir }}"
+    state: directory
+    mode: "0755"
+
+- name: Copiar instalador HDPS/Commvault al host
+  ansible.builtin.copy:
+    src: "{{ hdps_local_installer_dir }}/"
+    dest: "{{ hdps_remote_installer_dir }}/"
+    mode: preserve
+
+- name: Validar silent_install
+  ansible.builtin.stat:
+    path: "{{ hdps_remote_installer_dir }}/silent_install"
+  register: hdps_silent_install
+
+- name: Fallar si no existe silent_install
+  ansible.builtin.assert:
+    that:
+      - hdps_silent_install.stat.exists
+    fail_msg: "No se encontró silent_install en {{ hdps_remote_installer_dir }}."
+
+- name: Generar default.xml con authcode
+  ansible.builtin.template:
+    src: default_authcode.xml.j2
+    dest: "{{ hdps_remote_installer_dir }}/default.xml"
+    mode: "0600"
+  when: hdps_auth_method == "authcode"
+  no_log: true
+
+- name: Generar default.xml con usuario y password
+  ansible.builtin.template:
+    src: default_user_password.xml.j2
+    dest: "{{ hdps_remote_installer_dir }}/default.xml"
+    mode: "0600"
+  when: hdps_auth_method == "user_password"
+  no_log: true
+
+- name: Ejecutar instalación silenciosa
+  ansible.builtin.command:
+    cmd: "./silent_install -p default.xml"
+    chdir: "{{ hdps_remote_installer_dir }}"
+  register: hdps_install_result
+  changed_when: "'Installation completed' in hdps_install_result.stdout"
+
+- name: Mostrar resultado de instalación
+  ansible.builtin.debug:
+    var: hdps_install_result.stdout_lines

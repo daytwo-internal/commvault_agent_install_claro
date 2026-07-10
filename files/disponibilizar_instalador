@@ -1,0 +1,17 @@
+---Opción 1
+
+https://repo.cliente.local/commvault/11.40.16/unix/commvault_unix_installer.tar.gz
+
+
+---Opción 2
+
+NFS interno
+/nfs/software/commvault/11.40.16/Unix/
+
+montar nfs
+
+
+---Opción 3 SFTP
+
+
+
