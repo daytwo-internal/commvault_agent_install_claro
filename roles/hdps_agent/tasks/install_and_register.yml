@@ -72,15 +72,28 @@
         state: directory
         mode: "0755"
 
-    - name: Copiar instalador HDPS/Commvault al host
+#    - name: Copiar instalador HDPS/Commvault al host
+#      ansible.builtin.copy:
+#        src: "{{ hdps_local_installer_dir }}/"
+#        dest: "{{ hdps_remote_installer_dir }}/"
+#        mode: preserve
+
+    - name: Copiar instalador comprimido HDPS/Commvault al host
       ansible.builtin.copy:
-        src: "{{ hdps_local_installer_dir }}/"
-        dest: "{{ hdps_remote_installer_dir }}/"
-        mode: preserve
+        src: "{{ hdps_installer_archive }}"
+        dest: "{{ hdps_remote_installer_archive }}"
+        mode: "0644"
+
+    - name: Descomprimir instalador HDPS/Commvault en el host
+      ansible.builtin.unarchive:
+        src: "{{ hdps_remote_installer_archive }}"
+        dest: "{{ hdps_remote_installer_dir }}"
+        remote_src: true
+
 
     - name: Validar silent_install
       ansible.builtin.stat:
-        path: "{{ hdps_remote_installer_dir }}/silent_install"
+        path: "{{ hdps_remote_installer_dir }}/Unix/silent_install"
       register: hdps_silent_install
 
     - name: Fallar si no existe silent_install
@@ -92,7 +105,7 @@
     - name: Generar default.xml con authcode
       ansible.builtin.template:
         src: default_authcode.xml.j2
-        dest: "{{ hdps_remote_installer_dir }}/default.xml"
+        dest: "{{ hdps_remote_installer_dir }}/Unix/default.xml"
         mode: "0600"
       no_log: true
       when: hdps_auth_method == "authcode"
@@ -100,7 +113,7 @@
     - name: Generar default.xml con usuario/password
       ansible.builtin.template:
         src: default_user_password.xml.j2
-        dest: "{{ hdps_remote_installer_dir }}/default.xml"
+        dest: "{{ hdps_remote_installer_dir }}/Unix/default.xml"
         mode: "0600"
       no_log: true
       when: hdps_auth_method == "user_password"
@@ -108,7 +121,7 @@
     - name: Ejecutar silent_install para instalar y registrar
       ansible.builtin.command:
         cmd: "./silent_install -p default.xml"
-        chdir: "{{ hdps_remote_installer_dir }}"
+        chdir: "{{ hdps_remote_installer_dir }}/Unix"
       register: hdps_install_result
       changed_when: "'Installation completed' in hdps_install_result.stdout"
 

@@ -1,0 +1,11 @@
+
+hdps_installer_archive: "{{ playbook_dir }}/files/commvault_unix_11.40.16.tar.gz"
+hdps_remote_installer_archive: "/tmp/commvault_unix_11.40.16.tar.gz"
+hdps_remote_installer_dir: "/tmp/commvault_unix_installer"
+
+
+
+
+# Registro contra CommServe
+
+

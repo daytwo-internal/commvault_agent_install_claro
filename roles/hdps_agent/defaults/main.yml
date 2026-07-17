@@ -1,8 +1,9 @@
-
+---
 hdps_focus: "Instance001"
 
 hdps_install_directory: "/opt/hds"
 hdps_temp_directory: "/tmp"
+hdps_remote_installer_archive: "/tmp/commvault_unix_11.40.16.tar.gz"
 hdps_remote_installer_dir: "/tmp/commvault_unix_installer"
 
 hdps_components:
@@ -13,23 +14,12 @@ hdps_client_name: "{{ inventory_hostname }}"
 hdps_client_hostname: "{{ ansible_fqdn | default(inventory_hostname) }}"
 hdps_interface_name: "{{ ansible_default_ipv4.address | default(ansible_host) | default(inventory_hostname) }}"
 
-hdps_use_http_proxy: false
-hdps_force_install: false
+hdps_auth_method: "user_password"
 
-
-
-# Vacías porque deben venir de AAP Credential Type o group_vars si es laboratorio
-hdps_local_installer_dir: ""
 hdps_commserve_hostname: ""
 hdps_commcell_user: ""
 hdps_commcell_password: ""
 hdps_authcode: ""
 
-
-hdps_auth_method: "user_password" # o authcode
-
-
-##---
-#hdps_run_install: true
-#hdps_run_register: false
-#hdps_run_validate: true
+hdps_use_http_proxy: false
+hdps_force_install: false

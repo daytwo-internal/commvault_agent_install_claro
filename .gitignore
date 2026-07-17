@@ -1,0 +1,7 @@
+files/commvault_unix_11.40.16.tar.gz
+
+# Installers / binaries
+files/*.tar.gz
+files/*.zip
+files/*.iso
+files/*.bin
