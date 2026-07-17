@@ -6,7 +6,8 @@
 
   roles:
     - role: hdps_agent
-      vars:
-        hdps_run_install: false
-        hdps_run_register: true
-        hdps_run_validate: true
+  vars:
+    hdps_run_install_and_register: false
+    hdps_run_install: false
+    hdps_run_register: true
+    hdps_run_validate: false

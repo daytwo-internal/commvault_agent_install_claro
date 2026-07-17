@@ -1,9 +1,36 @@
 ---
-- name: Validar sistema operativo soportado
+
+- name: Validar que hdps_commserve_hostname esté definido
   ansible.builtin.assert:
     that:
-      - ansible_system in ["Linux"]
-    fail_msg: "Este role por ahora está preparado para Linux."
+      - hdps_commserve_hostname is defined
+      - hdps_commserve_hostname | length > 0
+    fail_msg: >
+      La variable hdps_commserve_hostname no está definida.
+      Debe venir desde la credencial custom de AAP.
+
+- name: Validar resolución DNS del CommServe con getent
+  ansible.builtin.command: "getent hosts {{ hdps_commserve_hostname }}"
+  register: hdps_commserve_getent
+  changed_when: false
+  failed_when: hdps_commserve_getent.rc != 0
+
+- name: Mostrar resolución del CommServe
+  ansible.builtin.debug:
+    msg: "CommServe {{ hdps_commserve_hostname }} resuelve como: {{ hdps_commserve_getent.stdout }}"
+
+- name: Validar conectividad TCP al puerto 8400 del CommServe
+  ansible.builtin.wait_for:
+    host: "{{ hdps_commserve_hostname }}"
+    port: 8400
+    timeout: 10
+    state: started
+  register: hdps_commserve_port_check
+
+- name: Mostrar resultado de conectividad al CommServe
+  ansible.builtin.debug:
+    msg: "Conectividad OK hacia {{ hdps_commserve_hostname }}:8400"
+
 
 - name: Validar que no se use ruta remota con espacios
   ansible.builtin.assert:
@@ -11,12 +38,12 @@
       - "' ' not in hdps_remote_installer_dir"
     fail_msg: "La ruta remota del instalador no debe tener espacios."
 
-- name: Validar ruta local del instalador
-  ansible.builtin.assert:
-    that:
-      - hdps_local_installer_dir | length > 0
-    fail_msg: "Debe definirse hdps_local_installer_dir."
-  when: hdps_run_install | bool
+#- name: Validar ruta local del instalador
+#  ansible.builtin.assert:
+#    that:
+#      - hdps_local_installer_dir | length > 0
+#    fail_msg: "Debe definirse hdps_local_installer_dir."
+#  when: hdps_run_install | bool
 
 - name: Validar método de autenticación
   ansible.builtin.assert:

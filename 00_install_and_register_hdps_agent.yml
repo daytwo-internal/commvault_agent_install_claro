@@ -5,4 +5,9 @@
   gather_facts: true
 
   roles:
-    - role: ../hdps_agent
+    - role: hdps_agent
+  vars:
+    hdps_run_install_and_register: true
+    hdps_run_install: false
+    hdps_run_register: false
+    hdps_run_validate: false

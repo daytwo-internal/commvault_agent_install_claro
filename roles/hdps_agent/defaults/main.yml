@@ -6,6 +6,9 @@ hdps_temp_directory: "/tmp"
 hdps_remote_installer_archive: "/tmp/commvault_unix_11.40.16.tar.gz"
 hdps_remote_installer_dir: "/tmp/commvault_unix_installer"
 
+hdps_register_enabled: true
+
+
 hdps_components:
   - 1002
   - 1101

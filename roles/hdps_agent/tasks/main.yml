@@ -1,3 +1,21 @@
 ---
-- name: Instalar y registrar agente HDPS/Commvault usando silent_install
+
+---
+- name: Ejecutar prechecks
+  ansible.builtin.import_tasks: precheck.yml
+
+- name: Ejecutar instalación y registro HDPS
   ansible.builtin.import_tasks: install_and_register.yml
+  when: hdps_run_install_and_register | default(false) | bool
+
+- name: Ejecutar instalación HDPS
+  ansible.builtin.import_tasks: install.yml
+  when: hdps_run_install | default(false) | bool
+
+- name: Ejecutar registro HDPS
+  ansible.builtin.import_tasks: register.yml
+  when: hdps_run_register | default(false) | bool
+
+- name: Ejecutar validación HDPS
+  ansible.builtin.import_tasks: validate.yml
+  when: hdps_run_validate | default(false) | bool
