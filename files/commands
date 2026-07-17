@@ -1,0 +1,8 @@
+sudo mkdir -p /opt/installers/commvault/11.40.16
+sudo chown -R root:root /opt/installers/commvault
+sudo chmod -R 755 /opt/installers/commvault
+
+
+sudo cp commvault_unix_11.40.16.tar.gz /opt/installers/commvault/11.40.16/
+sudo chmod 644 /opt/installers/commvault/11.40.16/commvault_unix_11.40.16.tar.gz
+
