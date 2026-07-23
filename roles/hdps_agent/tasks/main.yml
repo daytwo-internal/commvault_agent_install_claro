@@ -1,6 +1,5 @@
 ---
 
----
 - name: Ejecutar prechecks
   ansible.builtin.import_tasks: precheck.yml
 
